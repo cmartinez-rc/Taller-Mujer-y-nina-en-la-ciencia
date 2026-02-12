@@ -1,0 +1,157 @@
+body {
+  font-family: "Montserrat";
+  background-color: #000; /* ✏️ Aquí se establece el color de fondo */
+  user-select: none;
+  &.ganar {
+    animation: ganar 4s ease-in-out infinite;
+  }
+}
+
+/* ✏️ Esto es la "animación" de victoria, se pueden cambiar los colores */
+@keyframes ganar {
+  0%,
+  100% {
+    background-color: #7d5fff; /* ✏️ */
+  }
+
+  20% {
+    background-color: #ffb8b8; /* ✏️ */
+  }
+
+  40% {
+    background-color: #ffaf40; /* ✏️ */
+  }
+
+  60% {
+    background-color: #3ae374; /* ✏️ */
+  }
+
+  80% {
+    background-color: #7d5fff; /* ✏️ */
+  }
+}
+
+aside,
+section,
+header {
+  position: fixed;
+  color: white;
+}
+
+#total {
+  top: 10px;
+  left: 50%;
+  translate: -50% 0;
+  font-size: 64px; /* ✏️ Aquí se establece el tamaño del puntaje acumulado */
+  font-weight: bolder;
+  color: #ffffff; /* ✏️ Aquí se establece el color del puntaje acumulado */
+  text-shadow:
+    0px 0px 4px #000,
+    0px 0px 4px #000,
+    0px 0px 4px #000;
+}
+
+#jugador1,
+#jugador2 {
+  z-index: -1;
+  position: fixed;
+  top: 0;
+  width: 50%;
+  height: 100%;
+}
+
+#jugador1 {
+  left: 0;
+  background-color: red; /* ✏️ Aquí se establece el color del jugador 1 (izquierda) */
+}
+
+#jugador2 {
+  right: 0;
+  background-color: blue; /* ✏️ Aquí se establece el color del jugador 2 (derecha) */
+}
+
+#tablero {
+  border: 4px solid white; /* ✏️ Aquí se establece el grosor, tipo de linea y color de la linea del tablero */
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  min-height: 20dvh;
+  width: 75dvw;
+  padding: 40px;
+
+  h1 {
+    text-align: center;
+  }
+
+  #respuestas {
+    font-size: 32px;
+
+    div {
+      display: grid;
+      margin-top: 20px;
+      grid-template-columns: auto 1fr auto;
+      gap: 20px;
+
+      /* Bloque A - Las respuestas no deberían ser visibles */
+
+      /* Bloque A */
+
+      span {
+        padding-inline: 10px;
+        padding-bottom: 5px;
+        border-bottom: 4px dashed white;
+
+        &:first-of-type {
+          color: white;
+        }
+      }
+
+      &.mostrar:not(.revelada) span {
+        color: white;
+      }
+
+      &.revelada span {
+        color: yellow; /* ✏️ Aquí se establece el color que deberán tener las respuestas correctas */
+        border-bottom-color: yellow; /* ✏️ Aquí se establece el color que deberán tener las respuestas correctas */
+      }
+    }
+  }
+}
+
+.fallo {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #000b; /* ✏️ Aquí se establece el color de fondo en caso de que la respuesta sea incorrecta */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16dvw;
+}
+
+#intro {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  background-color: #000; /* ✏️ Aquí se establece el color de fondo de la animación de inicio del juego */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: intro 6s ease-in-out forwards; /* ✏️ En el valor 6s se establece cuanto tiempo dura la animación de inicio, se puede cambiar ese valor */
+}
+
+@keyframes intro {
+  0%,
+  80% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
